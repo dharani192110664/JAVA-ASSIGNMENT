@@ -1,0 +1,28 @@
+public class SubsequenceSum {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {1, 1, 2, 3};
+
+        System.out.println(sumOfScores(arr1));
+        System.out.println(sumOfScores(arr2));
+    }
+
+    static int sumOfScores(int[] arr) {
+        int n = arr.length;
+        int result = 0;
+
+        for (int i = 0; i < (1 << n); i++) {
+            int product = 1;
+            for (int j = 0; j < n; j++) {
+                if ((i & (1 << j)) > 0) {
+                    product *= arr[j];
+                }
+            }
+
+            result += product;
+        }
+
+        return result;
+    }
+}
