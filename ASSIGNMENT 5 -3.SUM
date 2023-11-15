@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class MinMaxSum {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        if (n <= 0 || n >= 100001) {
+            System.out.println("Invalid input for the number of integers.");
+            return;
+        }
+      long[] arr = new long[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextLong();
+            if (arr[i] < 0 || arr[i] >= Math.pow(10, 13)) {
+                System.out.println("Invalid input for individual integer values.");
+                return;
+            }
+        }
+
+                calculateMinMaxSum(arr);
+
+        scanner.close();
+    }
+
+    static void calculateMinMaxSum(long[] arr) {
+        int n = arr.length;
+        java.util.Arrays.sort(arr);
+        long minSum = 0;
+        for (int i = 0; i < n - 1; i++) {
+            minSum += arr[i];
+        }
+
+       
+        long maxSum = 0;
+        for (int i = 1; i < n; i++) {
+            maxSum += arr[i];
+        }
+        System.out.println(minSum + " " + maxSum);
+    }
+}
